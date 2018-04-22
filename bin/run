@@ -1,0 +1,51 @@
+#!/bin/bash
+
+JAVA_CMD=$1
+MIN_RAM=$2
+MAX_RAM=$3
+JAVA_PARAMETERS=$4
+SPIGOT_JAR=$5
+SERVER_DIR=$6
+
+cd -- ${SERVER_DIR}
+
+eula_false() {
+    grep -q 'eula=false' eula.txt
+    return $?
+}
+
+start_server() {
+    ${JAVA_CMD} -server -Xms${MIN_RAM} -Xmx${MAX_RAM} ${JAVA_PARAMETERS} -jar ${SPIGOT_JAR} nogui
+}
+
+# check eula.txt
+if [ -f eula.txt ] && eula_false ; then
+    echo "Please read the EULA at the link below:"
+    echo
+    echo "    https://account.mojang.com/documents/minecraft_eula"
+    echo
+    read -n1 -r -p "Have you read agree to the EULA shown above? [y/N] " response
+    echo
+    echo
+    if [[ $response =~ ^[Yy]$ ]] ; then
+	sed -i 's/false/TRUE/i' eula.txt
+    	echo "eula.txt has been modified to show that you agree to the EULA."
+    else
+        echo "You must agree to the EULA before playing!"
+        echo "To exit press <enter>"
+        read ignored
+    	exit
+    fi
+fi
+
+# if eula.txt is missing inform user and start MC to create eula.txt
+if [ ! -f eula.txt ]; then
+    echo "Missing eula.txt. Startup will fail and eula.txt will be created"
+    echo "Make sure to read eula.txt before playing!"
+    echo "To continue press <enter>"
+    read ignored
+fi
+
+echo "Starting server"
+start_server
+
