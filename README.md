@@ -16,14 +16,14 @@ or
 wget https://github.com/rodneyxr/spigot/releases/download/v1.0/spigot.tar.gz -O spigot.tar.gz
 ```
 
-**Change into `spigot` directory**
-```
-cd spigot
-```
-
 **Extract the contents**
 ```
 tar -xvf spigot.tar.gz
+```
+
+**Change into `spigot` directory**
+```
+cd spigot
 ```
 
 **Build and install (this can take up to 5 mintues to build)**
