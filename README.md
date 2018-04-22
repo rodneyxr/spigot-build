@@ -59,6 +59,7 @@ make run
 ```
 $ curl https://github.com/rodneyxr/spigot/releases/download/v1.0/spigot.tar.gz -o spigot.tar.gz
 $ tar -xvf spigot.tar.gz
+$ cd spigot
 $ make install
 $ make run # EULA will be created
 $ make run # Accept the EULA when prompted and the server will start
