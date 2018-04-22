@@ -6,6 +6,20 @@ Get a Spigot Minecraft server server running quickly!
 * git
 * openjdk-8-jdk
 
+## Set the version
+Edit the Makefile and enter the target version to the right of `VERSION=`.
+If you want the latest version, just change the version to `latest`.
+
+**Example for version 1.12.2:**  
+*Makefile*
+```
+1: ###################################################
+2: # Version
+3: # This can be something like 1.12.2 or latest
+4: 
+5: VERSION:=1.12.2
+```
+
 ## Install
 **Download the tar using `curl` or `wget`**
 ```
