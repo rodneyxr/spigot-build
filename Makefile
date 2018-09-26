@@ -2,7 +2,7 @@
 # Version
 # This can be something like 1.12.2 or latest
 
-VERSION:=1.12.2
+VERSION:=1.13.1
 
 ###################################################
 # Build settings
